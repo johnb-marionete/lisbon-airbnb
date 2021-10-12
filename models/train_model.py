@@ -16,6 +16,7 @@ import sys
 
 from pydoc import locate
 
+from joblib import dump
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
@@ -54,7 +55,7 @@ def main(input_filepath, model_filepath, model_config, output_metrics):
 
     print(scores)
     
-    
+    dump(clf, model_filepath)
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
